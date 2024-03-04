@@ -1,0 +1,45 @@
+<app-task-navbar></app-task-navbar>
+
+<div class="container">
+    <app-task-sidebar></app-task-sidebar>
+
+    <div class="tasks">
+        <div class="card" *ngFor="let task of tasks">
+             <app-task-tasks
+                [taskId]="task.taskId"
+                [taskTitle]="task.taskTitle"
+                [taskDescription]="task.taskDescription"
+                [taskDate]="task.taskDate"
+                [taskCompleted]="task.taskCompleted">
+            </app-task-tasks>
+        </div>
+    </div>
+</div>
+
+<div [ngClass]="{'modal': true, 'open': modalClass}" (click)="OnModalClick($event)">
+    <div class="modal-content">
+        <div class="modal-header">
+            <p>Publish new task...</p>
+            <button class="icon" (click)="CloseModal()"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="modal-article">
+            <form>
+                <input data-input type="text" name="title" placeholder="Add a title..." autocomplete="off" minlength="3" maxlength="25" [(ngModel)]="title">
+                <div class="textarea">
+                    <textarea name="description" maxlength="255" placeholder="Add a description..." (input)="Caracteres($event)" [(ngModel)]="description"></textarea>
+                    <div class="counter">{{ description.length }} / 255</div>
+                </div>
+                <div class="checkbox">
+                    <input id="checkbox-modal" type="checkbox" name="isChecked" [(ngModel)]="isChecked" (click)="Checkbox()">
+                    <span (click)="Checkbox()" class="checkbox-span">
+                        <i class="bi bi-check-lg" [ngClass]="{'hidden': !isChecked}"></i> 
+                    </span> 
+                    <label for="checkbox-modal">mark as completed</label>
+                </div>
+            </form>            
+        </div>
+        <div class="modal-footer">
+            <button (click)="PostTasks()">Save</button>
+        </div>
+    </div>
+</div>

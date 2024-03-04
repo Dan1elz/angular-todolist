@@ -1,0 +1,86 @@
+<div class="card">
+    <div class="header">
+        <h2>{{ taskTitle }}</h2>
+        <button (click)="ShowDropdown()" class="dropbtn"><i class="bi bi-three-dots"></i></button>
+        <div [ngClass]="{ 'show': isDrop }" class="dropdown-content">
+            <a (click)="OpenModalEdit()">Editar</a>
+            <a (click)="DeleteTask()">Excluir</a>
+        </div>
+    </div>
+    <div class="content">
+        <span>{{ taskDescription }}</span>
+    </div>
+    <div class="comments">
+        <div class="dropdown" *ngFor="let comment of comments; let i = index" [ngClass]="{ 'drop-active': isDropSecond[i] }">
+            <span>{{ comment.CommentText }}</span>
+            <button class="dropbtn" (click)="ShowDropdownSecond(i)"><i class="bi bi-three-dots"></i></button>
+            <div [ngClass]="{ 'show': isDropSecond[i] }" class="seconddropdown-content">
+                <a (click)="DeleteComment(comment.CommentId)">Excluir</a>
+            </div>
+        </div>
+    </div>
+    <div class="btn-comment">  
+        <button (click)="OpenModalComment()">add comment</button>
+    </div>
+    <div class="inputs">
+        <div class="data">
+            <span>{{ taskDate | date: 'dd/MM/yyyy' }}</span>
+        </div>
+        <div class="checkbox">
+            <input id="checkbox" type="checkbox"  [(ngModel)]="isChecked">
+            <span (click)="Checkbox()" class="checkbox-span">
+                <i class="bi bi-check-lg" [ngClass]="{'hidden': !isChecked}"></i>
+            </span>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div [ngClass]="{'modal': true, 'open': modalClass}" (click)="OnModalClick($event)">
+    <div class="modal-content">
+        <div class="modal-header">
+            <p>Edit your task...</p>
+            <button class="icon" (click)="CloseModal()"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="modal-article">
+            <form>
+                <input data-input type="text" name="title" placeholder="Add a title..." autocomplete="off" minlength="3" maxlength="25" [(ngModel)]="title">
+                <div class="textarea">
+                    <textarea name="description" maxlength="255" placeholder="Add a description..." (input)="Caracteres($event)" [(ngModel)]="description"></textarea>
+                    <div class="counter">{{ description.length }} / 255</div>
+                </div>
+                <div class="checkbox">
+                    <input id="checkbox-edit-modal" type="checkbox" name="isChecked" [(ngModel)]="isCheckedEdit" (click)="CheckboxEdit()">
+                    <span (click)="CheckboxEdit()" class="checkbox-span">
+                        <i class="bi bi-check-lg" [ngClass]="{'hidden': !isCheckedEdit}"></i> 
+                    </span> 
+                    <label for="checkbox-edit-modal">mark as completed</label>
+                </div>
+            </form>            
+        </div>
+        <div class="modal-footer">
+            <button (click)="EditTask()">Save</button>
+        </div>
+    </div>
+</div>
+
+<div [ngClass]="{'modal': true, 'open': modalClassComment}">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button class="icon" (click)="CloseModalComment()"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <div class="modal-article">
+            <form>
+                <div class="textarea">
+                    <textarea name="description" maxlength="255" placeholder="Add a description..." (input)="CaracteresComment($event)" [(ngModel)]="comment"></textarea>
+                    <div class="counter">{{ counterComment }} / 255</div>
+                </div>
+            </form>            
+        </div>
+        <div class="modal-footer">
+            <button (click)="CommentTask()">add</button>
+        </div>
+    </div>
+</div>

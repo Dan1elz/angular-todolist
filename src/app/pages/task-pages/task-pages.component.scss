@@ -1,0 +1,235 @@
+@use 'colors' as *;
+
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+:host {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  z-index: -1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  width: 100%;
+  height: calc(100vh - 4rem);  
+  margin: 0; 
+  padding: 0;
+  overflow: hidden;
+}
+
+.tasks {
+  padding: 0 15px;
+  overflow-wrap: break-word;
+  display: flex;
+  overflow-x: scroll;
+  background-color: $background-3;
+ 
+  .card {
+    padding: 20px;
+    margin: 20px 10px;
+    background-color: $card-background;
+    border-radius: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); 
+    max-width: 20rem;
+    min-width: 20rem;
+    // word-wrap: break-word;
+    max-height: calc(100vh - 5rem - 45px);
+    overflow-y: auto;
+    align-self: flex-start;
+
+    &::-webkit-scrollbar {  width: 8px;}
+    &::-webkit-scrollbar-track {
+      background-color: rgba(0, 0, 0, 0.08);
+     
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $card-comment;
+      border-radius: 50px;
+    }
+  } 
+}
+.modal {
+  display: none;
+  justify-content: center;
+  padding-top: 5rem;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  .modal-content {
+    position: absolute;
+    padding: 20px;
+    background-color: $card-background;
+    border-radius: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08); 
+    width: 20rem;
+    overflow-y: auto;
+    align-self: flex-start;
+    animation: fadein 0.3s ease-in-out;
+
+    .modal-header {
+      display: flex;
+      width: 100%;
+      height: 3rem;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+
+      p {
+        font-size: 1.3rem; 
+        color: $fonte;
+        font-weight: 700;
+        margin: 0;
+      }
+      button {
+        font-size: 1rem; 
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+    }
+    .modal-article {
+      width: 100%;
+      
+      form {
+        width: 100%;
+        
+        input {
+          width: 100%;
+          height: 2rem;
+          border: none;
+          border-bottom: 1px solid rgba(0, 0, 0, 0);
+          outline: none;
+          background-color: transparent;
+          padding: 0 15px;
+          color: $fonte;
+          font-size: 1rem;
+          font-weight: 500;
+          transition: 200ms;
+          display: grid;
+          place-items: center;
+          
+          &:focus { 
+            border-color: rgba(0, 0, 0, 0.9);
+            padding: 0 20px;
+          }
+          &::placeholder { color: $fonte;}
+        }
+        .textarea {
+          position: relative;
+          textarea {
+            margin-top: 10px;
+            resize: none;
+            width: 100%;
+            min-height: 3rem;
+            background-color: rgba(0, 0, 0, 0.05);
+            padding: 10px 15px;
+            border-radius: 15px;
+            border: none;
+            outline: none;
+            cursor:text;
+            transition: all 200ms;
+            color: $fonte;
+            font-size: 0.9rem;
+            // overflow-y: hidden;
+            position: relative;
+
+            &:focus {
+              min-height: 5.5rem;
+              height: auto;
+              padding: 10px 10px;
+            }
+            &::-webkit-scrollbar {  width: 8px;}
+            &::-webkit-scrollbar-track {
+              background-color: rgba(0, 0, 0, 0.08);
+             
+            }
+            &::-webkit-scrollbar-thumb {
+              background-color: $card-comment;
+              border-radius: 50px;
+            }
+          }
+          .counter {
+            position: absolute;
+            bottom: 15px;
+            right: 10px;
+            font-size: 0.8rem;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+    .modal-footer {
+      display: flex;
+      justify-content: end;
+      align-items: start;
+      width: calc(100%);
+
+      button {
+        font-size: 1rem;
+        font-weight: 500;
+        color: $fonte-2;
+        margin: 10px 0;
+        width: 100%;
+        height: 2rem;
+        text-align: center;
+        border: 1px solid $fonte-2;
+        outline: none;
+        transition: 200ms;
+        background-color: transparent;
+        border-radius: 10px;
+        cursor: pointer;
+    
+        &:hover {
+          color: $fonte;
+          border-color: $fonte;
+        }
+      }
+    }
+  }
+} .open { display: flex;}
+
+.checkbox {
+  display: flex;
+  label {
+    font-size: 0.9rem;
+    padding: 0;
+    margin: 0;
+  }
+  input {
+    visibility: hidden;
+    max-width: 0%;
+    max-height: 0%;
+    position: fixed;
+    top: 15px;
+  }
+  span {
+    border: 1px solid $fonte-2;
+    width: 1.1rem;
+    height: 1.1rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+  }
+  .hidden{
+    opacity: 0;
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

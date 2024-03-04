@@ -1,0 +1,75 @@
+@use 'colors' as *;
+
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+:host {
+  display: block;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+aside {
+  position: relative;
+  height: 100%;  
+  width: 5rem;
+  display: grid;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.08) 1px 0px 0px 0px;
+  padding-top: 1rem;
+  transition: width 0.2s ease;
+
+  span {
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    padding: 0.3rem 0.5rem;
+    color: $background-2;
+  }
+
+  ul {  list-style: none;}
+
+  li {
+    line-height: 3rem;
+    transition: 200ms;
+    border-radius: 50px;
+    white-space: nowrap;
+
+    &:last-child {
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+    }
+  }
+  .color-1 {  background-color: $color-1;}
+  .color-2 {  background-color: $color-2;}
+  .color-3 {  background-color: $color-3;}
+  .color-4 {  background-color: $color-4;}
+  .color-5 {  background-color: $color-5;}
+}
+.open { width: 15rem;
+
+  li {
+    padding: 0 15px;
+
+    &:hover { background-color: rgba(0, 0, 0, 0.03);}
+    &:last-child { width: 85%;}
+  }
+
+  button {
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: transparent;
+  } 
+}
+.closed { width: 5rem;
+
+  span {  transition: 200ms;
+    
+    &:hover { filter: brightness(80%);}
+  }
+  button {  display: none;}
+}

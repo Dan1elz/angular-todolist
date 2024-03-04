@@ -1,0 +1,335 @@
+@use 'colors' as *;
+
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+:host {
+  display: block;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  height: 2rem;
+  position: relative; 
+  
+  .dropdown-content {
+    right: 0;
+    top: 2rem;
+    display: none;
+    position: absolute;
+    background-color: $card-background;
+    min-width: 90px;
+    box-shadow: 0 8px 16px 0  rgba(0, 0, 0, 0.05);
+    z-index: 1;
+
+    a {
+      color: $fonte-2;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      font-size: 1rem;
+      transition: 400ms;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+  .show { display: block;}
+  
+  h2 {
+    margin-top: 0; 
+    font-size: 1.3rem; 
+    color: $fonte;
+  }
+  button {
+    border: none;
+    outline: none;
+    background: transparent;
+    cursor: pointer;
+  }
+}
+
+span {
+  font-size: 0.9rem; 
+  line-height: 1.3rem;
+  display: flex;
+}
+.comments {
+  min-height: 2rem;
+  margin-top: 10px;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 5px;
+  border-radius: 15px;
+
+  .dropdown {
+    position: relative;
+    .seconddropdown-content {
+      left: 2rem;
+      top: 2.5rem;
+      display: none;
+      position: absolute;
+      background-color: $dropdown ;
+      min-width: 90px;
+      box-shadow: 0 8px 16px 0  rgba(0, 0, 0, 0.05);
+      z-index: 1;
+
+      a {
+        color: $fonte;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 1rem;
+        transition: 400ms;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.05);
+        }
+      }
+    }
+    .show { display: block;}
+  }
+
+  button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+ div {
+  margin: 10px 0;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.85);
+ }
+  
+}
+.inputs{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+.btn-comment {
+  button {
+    font-size: 1rem;
+    font-weight: 500;
+    color: $fonte;
+    margin: 10px 0;
+    width: 100%;
+    height: 2rem;
+    text-align: center;
+    border: 1px solid $fonte;
+    outline: none;
+    transition: 200ms;
+    background-color: transparent;
+    border-radius: 10px;
+
+    &:hover {
+      color: $fonte-2;
+      border-color: $fonte-2;
+    }
+  }
+}
+.checkbox{
+  input {
+    visibility: hidden;
+    position: fixed;
+  }
+  span {
+    border: 1px solid $fonte;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hidden{
+    opacity: 0;
+  }
+}
+.modal {
+  z-index: 1000;
+  display: none;
+  justify-content: center;
+  padding-top: 5rem;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.02);
+
+  .modal-content {
+    padding: 20px;
+    background-color: $card-background;
+    border-radius: 5px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    width: 20rem;
+    overflow-y: auto;
+    align-self: flex-start;
+    animation: fadein 0.3s ease-in-out;
+
+    .modal-header {
+      display: flex;
+      width: 100%;
+      height: 2rem;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+    p {
+      font-size: 1.3rem; 
+      color: $fonte;
+      font-weight: 700;
+      margin: 0;
+    }
+    button {
+      font-size: 1rem; 
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+
+  .modal-article {
+    width: 100%;
+    
+    form {
+      width: 100%;
+      
+      input {
+        width: 100%;
+        height: 2rem;
+        border: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0);
+        outline: none;
+        background-color: transparent;
+        padding: 0 15px;
+        color: $fonte;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: 200ms;
+        display: grid;
+        place-items: center;
+        
+        &:focus { 
+          border-color: rgba(0, 0, 0, 0.9);
+          padding: 0 20px;
+        }
+        &::placeholder { color: $fonte;}
+      }
+      .textarea {
+        position: relative;
+        textarea {
+          margin-top: 10px;
+          resize: none;
+          width: 100%;
+          min-height: 3rem;
+          background-color: rgba(0, 0, 0, 0.05);
+          padding: 10px 15px;
+          border-radius: 15px;
+          border: none;
+          outline: none;
+          cursor:text;
+          transition: all 200ms;
+          color: $fonte;
+          font-size: 0.9rem;
+          // overflow-y: hidden;
+          position: relative;
+
+          &:focus {
+            min-height: 5.5rem;
+            height: auto;
+            padding: 10px 10px;
+          }
+          &::-webkit-scrollbar {  width: 8px;}
+          &::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0.08);
+           
+          }
+          &::-webkit-scrollbar-thumb {
+            background-color: $card-comment;
+            border-radius: 50px;
+          }
+        }
+        .counter {
+          position: absolute;
+          bottom: 15px;
+          right: 10px;
+          font-size: 0.8rem;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+  .modal-footer {
+    display: flex;
+    justify-content: end;
+    align-items: start;
+    width: calc(100%);
+
+    button {
+      font-size: 1rem;
+      font-weight: 500;
+      color: $fonte-2;
+      margin: 10px 0;
+      width: 100%;
+      height: 2rem;
+      text-align: center;
+      border: 1px solid $fonte-2;
+      outline: none;
+      transition: 200ms;
+      background-color: transparent;
+      border-radius: 10px;
+      cursor: pointer;
+  
+      &:hover {
+        color: $fonte;
+        border-color: $fonte;
+      }
+    }
+  }
+} .open { display: flex;}
+.checkbox {
+  display: flex;
+  label {
+    font-size: 0.9rem;
+    padding: 0;
+    margin: 0;
+  }
+  input {
+    visibility: hidden;
+    max-width: 0%;
+    max-height: 0%;
+    position: fixed;
+    top: 15px;
+  }
+  span {
+    border: 1px solid $fonte-2;
+    width: 1.1rem;
+    height: 1.1rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+  }
+  .hidden{
+    opacity: 0;
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

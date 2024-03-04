@@ -1,0 +1,9 @@
+<aside [ngClass]="classeDaDiv">
+    <ul>
+        <li (click)="Null()"><a><span class="color-1"><i class="bi bi-pencil"></i>      </span><button>all tasks</button></a></li>
+        <li (click)="True()"><a><span class="color-2"><i class="bi bi-check"></i>       </span><button>only completed</button></a></li>
+        <li (click)="False()"><a><span class="color-3"><i class="bi bi-x"></i>          </span><button>just not completed</button></a></li>
+        <li><a routerLink="/perfil"><span class="color-4"><i class="bi bi-person"></i>  </span><button>Profile</button></a></li>
+        <li (click)="Logout()"><a><span class="color-5"><i class="bi bi-person-x"></i>  </span><button>Disconnect</button></a></li>
+    </ul>
+</aside>

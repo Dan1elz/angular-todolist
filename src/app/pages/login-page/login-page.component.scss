@@ -1,0 +1,126 @@
+@use 'colors' as *;
+
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; 
+  background-color: $background-3;
+}
+.form {
+  width: 25rem;
+  height: 30rem; 
+  background-color: $background-2;
+  border-radius: 15px;
+  display: flex;
+  color: $fonte;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+  form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 15px 20px;
+
+    .input-box {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      width: 90%;
+
+      [data-input] {
+        width: 100%;
+        height: 3rem;
+        padding: 0 15px;
+        border-radius: 25px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        outline: none;
+        background: transparent;
+        color: $fonte;
+        transition: 200ms;
+      
+        &:focus { border-color: rgba(0, 0, 0, 0.9);}
+        &::placeholder {  color: $fonte;}
+      }
+
+      .icon {
+        position: absolute;
+        right: 15px;
+        top: 9px;
+        font-size: 1.3rem;
+      }
+    }
+
+    .button-submit {
+      width: 90%;
+      height: 3rem;
+      border-radius: 25px;
+      border: none;
+      outline: none;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: 300ms;
+      color: $background-2;
+      background: $linear-background;
+      cursor: pointer;
+    
+      &:hover {
+        background-clip: text;
+        color: transparent;
+        font-weight: 700;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      }
+    }
+
+    .register-box {
+      width: 90%;
+      display: flex;
+      justify-content: center;
+      font-size: 1rem;
+      
+      span a {
+        color: $fonte;
+        text-decoration: none;
+        font-weight: 600;
+      } 
+    }
+  }
+}
+.alert {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 25rem;
+  height: 3rem;
+  opacity: 0;
+  border-radius: 0.25rem; 
+  box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+  padding: 0.75rem; 
+  font-size: 1rem;
+  transition: all 200ms;
+
+  button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+}
+
+.error {
+  opacity: 1;
+  background-color: $error-background; 
+  color: $error-color; 
+  border: 1px solid $error-background;
+  
+  button {
+    color: $error-color; 
+    cursor: pointer;
+  }
+}
