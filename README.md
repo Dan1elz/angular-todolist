@@ -6,6 +6,7 @@
 
 ### Tecnologias Utilizadas
 - ***Angular:*** Framework utilizado para o desenvolvimento do aplicativo web.
+- ***SCSS:** O Sassy CSS foi utilizado para a estilização do projeto de forma mais eficaz.
 - ***TypeScript:*** Um superset de JavaScript utilizado para escrever toda a parte logica da aplicação.
 
 ### Funcionalidades
