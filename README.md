@@ -2,7 +2,7 @@
 <div style="text-align: justify">
 
 ### Descrição do Projeto
-<p>Este projeto é uma simples aplicação desenvolvido em angular para o consumo de minha api dotnet-webapi-todolist. Ele foi desenvolvido com o objetivo de praticar os conceitos fundamentais do framework Angular</p>
+<p>Este projeto é uma simples aplicação web desenvolvido em angular para o consumo da minha api dotnet-webapi-todolist. Ele foi desenvolvido com o objetivo de praticar os conceitos fundamentais do framework Angular</p>
 
 ### Tecnologias Utilizadas
 - ***Angular:*** Framework utilizado para o desenvolvimento do aplicativo web.
